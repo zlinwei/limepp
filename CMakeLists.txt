@@ -33,9 +33,4 @@ target_link_libraries(basicRx ${Boost_LIBRARIES} LimeSDR)
 
 
 enable_testing()
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
-
-add_executable(tests tests.cpp)
-target_link_libraries(tests GTest::GTest GTest::Main)
-add_test(TestAllCase tests)
+add_subdirectory(tests)
