@@ -55,10 +55,10 @@ void Transmitter::processSending() {
     this->sending = true;
 
     //Initialize data buffers
-    const int tx_size = 1000; //1k samples period
+    const int tx_size = 1024; //1k samples period
     short tx_buffer[2 * tx_size];     //buffer to hold complex values (2*samples))
 
-    const short max_data = (1 << 10) - 1;
+    const short max_data = (1 << 10) - 1;//
 
     //构造信号
     switch (_source_type) {

@@ -5,10 +5,12 @@
 #include <string>
 #include <Transmitter.hpp>
 
+void showUsage();
+
 
 int main(int argc, char **argv) {
     Transmitter::sptr sdr = Transmitter::make();
-
+    showUsage();
     Transmitter::TX_PARAMS params{};
     params.freq = 30e6;
     params.gain = 70;
@@ -82,5 +84,17 @@ int main(int argc, char **argv) {
     sdr->Close();
 
     return 0;
+}
+
+void showUsage(){
+    std::cout << "command\t\tparam\t\tdetail\n"
+     << "start\t\tNone\t\tStart\n"
+     << "stop\t\tNone\t\tStop\n"
+     << "freq\t\t10e6\t\tSet Frequency\n"
+     << "gain\t\t50\t\tSet Gain\n"
+     << "fs\t\t10e6\t\tSet TxRate\n"
+     << "tri\t\tNone\t\tSet Triangle Wave\n"
+     << "square\t\tNone\t\tSet Square Wave\n"
+     << "wave\t\tNone\t\tSet Const Wave" << std::endl;
 }
 
