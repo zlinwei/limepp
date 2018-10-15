@@ -10,10 +10,10 @@ int main(int argc, char **argv) {
     Transmitter::sptr sdr = Transmitter::make();
 
     Transmitter::TX_PARAMS params{};
-    params.freq = 500e6;
+    params.freq = 30e6;
     params.gain = 70;
-    params.sample_rate = 2e6;
-    params.st = Transmitter::SOURCE_CONST;
+    params.sample_rate = 10e6;
+    params.st = Transmitter::SOURCE_TRIANGLE;
 
     sdr->setTxParams(params);
 
