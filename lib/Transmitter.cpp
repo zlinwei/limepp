@@ -7,6 +7,8 @@
 
 #include "Transmitter.hpp"
 #include <fstream>
+#include <boost/random.hpp>
+#include <boost/random/normal_distribution.hpp>
 
 Transmitter::sptr Transmitter::_instance = NULL;
 
@@ -91,6 +93,17 @@ void Transmitter::processSending() {
                 tx_buffer[2 * i] = static_cast<short>(i * max_data / tx_size);
                 tx_buffer[2 * i + 1] = static_cast<short>(i * max_data / tx_size);
             }
+            break;
+        }
+        case SOURCE_NORMAL: {
+            std::cout << "发送高斯信号" << std::endl;
+            boost::random::mt19937 rng(time(0));
+            boost::random::normal_distribution<float> distribution;
+            for (int i = 0; i < tx_size; ++i) {
+                tx_buffer[2 * i] = static_cast<short>(255.0 * distribution(rng));
+                tx_buffer[2 * i + 1] = static_cast<short>(255.0 * distribution(rng));
+            }
+
             break;
         }
         default: {

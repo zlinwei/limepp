@@ -56,6 +56,12 @@ int main(int argc, char **argv) {
             continue;
         }
 
+        if (command == "normal") {
+            params.st = Transmitter::SOURCE_NORMAL;
+            sdr->setTxParams(params);
+            continue;
+        }
+
         if (command == "square") {
             params.st = Transmitter::SOURCE_SQUARE;
             sdr->setTxParams(params);
@@ -86,15 +92,17 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-void showUsage(){
+void showUsage() {
     std::cout << "command\t\tparam\t\tdetail\n"
-     << "start\t\tNone\t\tStart\n"
-     << "stop\t\tNone\t\tStop\n"
-     << "freq\t\t10e6\t\tSet Frequency\n"
-     << "gain\t\t50\t\tSet Gain\n"
-     << "fs\t\t10e6\t\tSet TxRate\n"
-     << "tri\t\tNone\t\tSet Triangle Wave\n"
-     << "square\t\tNone\t\tSet Square Wave\n"
-     << "wave\t\tNone\t\tSet Const Wave" << std::endl;
+              << "start\t\tNone\t\tStart\n"
+              << "stop\t\tNone\t\tStop\n"
+              << "freq\t\t10e6\t\tSet Frequency\n"
+              << "gain\t\t50\t\tSet Gain\n"
+              << "fs\t\t10e6\t\tSet TxRate\n"
+              << "tri\t\tNone\t\tSet Triangle Wave\n"
+              << "square\t\tNone\t\tSet Square Wave\n"
+              << "wave\t\tNone\t\tSet Const Wave"
+              << "normal\t\tNone\t\tSet Normal Wave\n"
+              << std::endl;
 }
 

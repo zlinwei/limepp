@@ -30,7 +30,8 @@ public:
         SOURCE_FILE = 0,
         SOURCE_TRIANGLE,
         SOURCE_SQUARE,
-        SOURCE_CONST
+        SOURCE_CONST,
+        SOURCE_NORMAL
     };
 
     struct TX_PARAMS {
